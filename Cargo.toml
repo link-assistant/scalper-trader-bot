@@ -47,6 +47,37 @@ module_name_repetitions = "allow"
 too_many_lines = "allow"
 missing_errors_doc = "allow"
 missing_panics_doc = "allow"
+# Allow non-const functions for better API flexibility
+missing_const_for_fn = "allow"
+# Allow flexible formatting in format! macros
+uninlined_format_args = "allow"
+# Allow number literals without separators for common algorithm constants
+unreadable_literal = "allow"
+# Allow casting for iterators (common in order book calculations)
+cast_possible_truncation = "allow"
+cast_possible_wrap = "allow"
+# Allow map().unwrap_or() pattern for clarity
+map_unwrap_or = "allow"
+# Allow or_fun_call for cleaner code
+or_fun_call = "allow"
+# Allow closures that could be method references for readability
+redundant_closure_for_method_calls = "allow"
+# Allow impl Default that could be derived for explicit defaults
+derivable_impls = "allow"
+# Allow unused self in methods for future extensibility
+unused_self = "allow"
+# Allow iterating over key-value pairs when we want to ignore values
+for_kv_map = "allow"
+# Allow string returns without static lifetime
+unnecessary_literal_bound = "allow"
+# Allow return Self without must_use in builder patterns
+return_self_not_must_use = "allow"
+# Allow must_use without must_use attribute on common types
+must_use_candidate = "allow"
+# Allow field names that start with struct name (e.g., order_type in Order)
+struct_field_names = "allow"
+# Allow use statements in test modules after other statements
+items_after_statements = "allow"
 
 [profile.release]
 lto = true

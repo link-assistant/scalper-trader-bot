@@ -105,7 +105,7 @@ impl InteractiveBrokersAdapter {
 
     /// Returns the configuration.
     #[must_use]
-    pub fn config(&self) -> &InteractiveBrokersConfig {
+    pub const fn config(&self) -> &InteractiveBrokersConfig {
         &self.config
     }
 }

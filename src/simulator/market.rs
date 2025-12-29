@@ -223,7 +223,7 @@ impl SimulatedMarket {
     fn calculate_price_change(&self) -> Decimal {
         // Use tick count to create deterministic but varied price movements
         let seed = self.tick_count;
-        let pseudo_random = ((seed * 1103515245 + 12345) % 100) as i64 - 50;
+        let pseudo_random = ((seed * 1_103_515_245 + 12345) % 100) as i64 - 50;
         let random_factor = Decimal::new(pseudo_random, 2); // -0.50 to 0.50
 
         let base_change = self.current_mid_price * self.volatility * random_factor;

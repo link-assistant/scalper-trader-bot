@@ -85,7 +85,7 @@ impl BinanceAdapter {
 
     /// Returns the configuration.
     #[must_use]
-    pub fn config(&self) -> &BinanceConfig {
+    pub const fn config(&self) -> &BinanceConfig {
         &self.config
     }
 }
@@ -125,8 +125,7 @@ impl MarketDataProvider for BinanceAdapter {
         // Use GET /api/v3/depth
 
         Err(ExchangeError::ConfigurationError(format!(
-            "Order book fetching for {} not yet implemented",
-            instrument
+            "Order book fetching for {instrument} not yet implemented"
         )))
     }
 
