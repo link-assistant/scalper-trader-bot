@@ -1,26 +1,35 @@
 [package]
-name = "my-package"
+name = "scalper-trader-bot"
 version = "0.1.0"
 edition = "2021"
-description = "A Rust package template for AI-driven development"
+description = "A Rust-based scalping trader bot with multi-exchange support, market simulator, and comprehensive testing"
 readme = "README.md"
 license = "Unlicense"
-keywords = ["template", "rust", "ai-driven"]
-categories = ["development-tools"]
-repository = "https://github.com/link-foundation/rust-ai-driven-development-pipeline-template"
-documentation = "https://github.com/link-foundation/rust-ai-driven-development-pipeline-template"
+keywords = ["trading", "scalping", "bot", "crypto", "exchange"]
+categories = ["finance", "simulation"]
+repository = "https://github.com/link-assistant/scalper-trader-bot"
+documentation = "https://github.com/link-assistant/scalper-trader-bot"
 rust-version = "1.70"
 
 [lib]
-name = "my_package"
+name = "scalper_trader_bot"
 path = "src/lib.rs"
 
 [[bin]]
-name = "my-package"
+name = "scalper-trader-bot"
 path = "src/main.rs"
 
 [dependencies]
-tokio = { version = "1.0", features = ["rt-multi-thread", "macros", "time"] }
+tokio = { version = "1.0", features = ["rt-multi-thread", "macros", "time", "sync"] }
+async-trait = "0.1"
+thiserror = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rust_decimal = { version = "1.36", features = ["serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.11", features = ["v4", "serde"] }
 
 [dev-dependencies]
 tokio-test = "0.4"
@@ -38,6 +47,37 @@ module_name_repetitions = "allow"
 too_many_lines = "allow"
 missing_errors_doc = "allow"
 missing_panics_doc = "allow"
+# Allow non-const functions for better API flexibility
+missing_const_for_fn = "allow"
+# Allow flexible formatting in format! macros
+uninlined_format_args = "allow"
+# Allow number literals without separators for common algorithm constants
+unreadable_literal = "allow"
+# Allow casting for iterators (common in order book calculations)
+cast_possible_truncation = "allow"
+cast_possible_wrap = "allow"
+# Allow map().unwrap_or() pattern for clarity
+map_unwrap_or = "allow"
+# Allow or_fun_call for cleaner code
+or_fun_call = "allow"
+# Allow closures that could be method references for readability
+redundant_closure_for_method_calls = "allow"
+# Allow impl Default that could be derived for explicit defaults
+derivable_impls = "allow"
+# Allow unused self in methods for future extensibility
+unused_self = "allow"
+# Allow iterating over key-value pairs when we want to ignore values
+for_kv_map = "allow"
+# Allow string returns without static lifetime
+unnecessary_literal_bound = "allow"
+# Allow return Self without must_use in builder patterns
+return_self_not_must_use = "allow"
+# Allow must_use without must_use attribute on common types
+must_use_candidate = "allow"
+# Allow field names that start with struct name (e.g., order_type in Order)
+struct_field_names = "allow"
+# Allow use statements in test modules after other statements
+items_after_statements = "allow"
 
 [profile.release]
 lto = true
